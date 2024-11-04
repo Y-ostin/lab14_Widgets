@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
 }
 
+//android blocks review
+
+
 android {
     namespace = "com.example.lab14_widgets"
     compileSdk = 34
@@ -48,6 +51,8 @@ android {
         }
     }
 }
+
+//END CHECKOUT OF BLOKS
 
 dependencies {
 
