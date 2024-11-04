@@ -1,12 +1,15 @@
 package com.example.lab14_widgets
 
 import android.content.Context
+import android.content.Intent
+import androidx.activity.ComponentActivity
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
 import androidx.glance.Button
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
 import androidx.glance.GlanceTheme
+import androidx.glance.LocalContext
 import androidx.glance.action.actionStartActivity
 import androidx.glance.appwidget.GlanceAppWidget
 import androidx.glance.appwidget.provideContent
@@ -43,8 +46,17 @@ class SimpleWidgetContent : GlanceAppWidget() {
                     text = "Página Principal",
                     onClick = actionStartActivity<MainActivity>()
                 )
+                Button(
+                    text = "Ajustes",
+                    onClick = actionStartActivity<SettingsActivity>() // Cambiar a SettingsActivity
+                )
 
             }
         }
     }
+}
+@Composable
+inline fun <reified T : ComponentActivity> actionStartActivity() {
+    val context = LocalContext.current
+    context.startActivity(Intent(context, T::class.java))
 }
